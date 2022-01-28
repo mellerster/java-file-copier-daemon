@@ -7,7 +7,7 @@ public class Main {
     private static String srcDir = "C:\\Users\\Diego\\Nextcloud\\SubidasInstantáneas";
     private static String checkDir = "E:\\Diego\\Nextcloud";
     public static void main(String[] args) {
-        /*run();
+        run();
         // Sleep for five seconds
         try {
             while(true) {
@@ -15,22 +15,7 @@ public class Main {
             }
         } catch (InterruptedException ignored) {
         }
-        System.out.println("Done.");*/
-        Compare compare = new Compare();
-        Copy copy = new Copy();
-		try
-		{
-            File dir1 = new File(srcDir);
-            File dir2 = new File(checkDir);
-			Map<String,File> files = compare.getDiff(dir1,dir2);
-            System.out.println("Done comparing, copying");
-            copy.copyFiles(files, srcDir, checkDir);      
-            System.out.println("Done copying");
-		}
-		catch(IOException ie)
-		{
-			ie.printStackTrace();
-		}
+        System.out.println("Done.");
     }
 
     private static void run(){
@@ -39,13 +24,24 @@ public class Main {
             public void run() {
                 // Repeat forever
                 while (true) {
-                    /*DirectoryComparer dirDiff = new DirectoryComparer(srcDir,".+","*");
-                    Set<String> ret = dirDiff.compareDir(checkDir);
-                    System.out.println(ret.size());*/
-                    System.out.println("I'm a Daemon.");
-                    // Sleep for half a second
+                    Compare compare = new Compare();
+                    Copy copy = new Copy();
+                    try
+                    {
+                        File dir1 = new File(srcDir);
+                        File dir2 = new File(checkDir);
+                        System.out.println("Comparing");
+                        Map<String,File> files = compare.getDiff(dir1,dir2);
+                        System.out.println("Done comparing, copying");
+                        copy.copyFiles(files, srcDir, checkDir);      
+                        System.out.println("Done copying");
+                    }
+                    catch(IOException ie)
+                    {
+                        ie.printStackTrace();
+                    }
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(60000);
                     } catch (InterruptedException ignored) {
                     }
                 }
