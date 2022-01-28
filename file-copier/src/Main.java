@@ -1,3 +1,5 @@
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
         run();
@@ -17,6 +19,8 @@ public class Main {
             public void run() {
                 // Repeat forever
                 while (true) {
+                    DirectoryComparer dirDiff = new DirectoryComparer("",".+","*");
+                    Set<String> ret;
                     System.out.println("I'm a Daemon.");
                     // Sleep for half a second
                     try {
