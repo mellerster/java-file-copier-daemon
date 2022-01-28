@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\Users\\Diego\\Downloads\\org.apache.commons.io.jar\\org.apache.commons.io.jar"
+    ]
+}
